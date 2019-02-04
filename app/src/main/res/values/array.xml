@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sections">
+        <item >Play Store</item>
+        <item >Whatsapp</item>
+        <item >Facebook</item>
+        <item >E-mail</item>
+        <!--<item >Con Rebuttal</item>-->
+        <!--<item >2nd Speaker Cross</item>-->
+        <!--<item >Pro Summary</item>-->
+        <!--<item >Con Summary</item>-->
+        <!--<item >Grand Cross</item>-->
+        <!--<item >Pro Final Focus</item>-->
+        <!--<item >Con Final Focus</item>-->
+    </string-array>
+</resources>

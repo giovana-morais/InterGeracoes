@@ -1,0 +1,16 @@
+# dados do firebase
+app/google-services.json
+
+# build files
+/*/build/
+
+# configs locais
+local.properties
+
+# gradle files
+.gradle/
+
+.DS_Store
+.DS_Store?
+._*
+.Trashes
