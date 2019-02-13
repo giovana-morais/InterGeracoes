@@ -1,6 +1,5 @@
 package io.github.giovana_morais.intergeracoes;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,15 +10,22 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    private DatabaseReference mDatabase;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
@@ -40,6 +46,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         aulas.add(new VideoAula("Whataspp", "Enviar foto da galeria", "gs://intergeracoes-2018.appspot.com/enviar_foto_galeria.mp4"));
 
         return aulas;
+    }
+
+    public void getVideoAulas(DatabaseReference mDatabase) {
+        List aulas;
+        aulas = new ArrayList();
+        Query videoAulas = mDatabase.child("videos");
+
+
+
+//        fazer o import do banco de dados aqui
+
     }
 
     public void onItemClick(AdapterView lista, View v, int position, long id) {
