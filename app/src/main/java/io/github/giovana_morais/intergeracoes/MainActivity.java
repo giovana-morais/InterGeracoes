@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+
     public void onItemClick(AdapterView lista, View v, int position, long id) {
         VideoAula va = new VideoAula();
         va = (VideoAula) lista.getItemAtPosition(position);
