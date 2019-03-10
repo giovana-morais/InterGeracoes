@@ -1,14 +1,19 @@
 package io.github.giovana_morais.intergeracoes;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VideoAula {
     private String grupo;   // grupo (wpp, facebook etc)
     private String nome;    // tema da videoaula em si
-//    private URL url;        // link pro youtube
     private String url;
 
-    VideoAula() {
 
+    VideoAula(){   }
+
+    VideoAula(String nome) {
+        this.nome = nome;
     }
 
     VideoAula(String grupo, String nome, String url) {

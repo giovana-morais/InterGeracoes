@@ -2,6 +2,7 @@ package io.github.giovana_morais.intergeracoes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,55 +11,42 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    private DatabaseReference mDatabase;
+    private DatabaseReference mainDB;
+    private FirebaseHelper helper;
+    private List<VideoAula> videoList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mainDB = FirebaseDatabase.getInstance().getReference();
+        helper = new FirebaseHelper(mainDB);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        ListView videoList = (ListView) findViewById(R.id.lista);
 
-        ListView listaDeCursos = (ListView) findViewById(R.id.lista);
-        List<VideoAula> cursos = todasAsAulas();
-        ArrayAdapter<VideoAula> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cursos);
-        listaDeCursos.setAdapter(adapter);
-        listaDeCursos.setOnItemClickListener(this);
-    }
+        ArrayAdapter<VideoAula> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, helper.retrieve());
 
-    // TODO: tirar esses endereços hardcorded
-    public List<VideoAula> todasAsAulas() {
-        List aulas;
-        aulas = new ArrayList();
-        aulas.add(new VideoAula("Whatsapp", "Iniciar conversa individual", "gs://intergeracoes-2018.appspot.com/iniciar_conversa.mp4"));
-        aulas.add(new VideoAula("Whatsapp", "Iniciar conversa em grupo", "gs://intergeracoes-2018.appspot.com/iniciar_grupo.mp4"));
-        aulas.add(new VideoAula("Whatsapp", "Enviar foto da câmera", "gs://intergeracoes-2018.appspot.com/enviar_foto.mp4"));
-        aulas.add(new VideoAula("Whataspp", "Enviar foto da galeria", "gs://intergeracoes-2018.appspot.com/enviar_foto_galeria.mp4"));
-
-        return aulas;
-    }
-
-    public void getVideoAulas(DatabaseReference mDatabase) {
-        List aulas;
-        aulas = new ArrayList();
-        Query videoAulas = mDatabase.child("videos");
-
-
-
-//        fazer o import do banco de dados aqui
+        videoList.setAdapter(adapter);
+        videoList.setOnItemClickListener(this);
 
     }
-
 
     public void onItemClick(AdapterView lista, View v, int position, long id) {
         VideoAula va = new VideoAula();
