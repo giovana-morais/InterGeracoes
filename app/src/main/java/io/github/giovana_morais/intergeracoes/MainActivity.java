@@ -29,23 +29,30 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private DatabaseReference mainDB;
     private FirebaseHelper helper;
-    private List<VideoAula> videoList;
+    private List<VideoAula> classList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainDB = FirebaseDatabase.getInstance().getReference();
-        helper = new FirebaseHelper(mainDB);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         ListView videoList = (ListView) findViewById(R.id.lista);
 
-        ArrayAdapter<VideoAula> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, helper.retrieve());
+        if (mainDB == null) {
+            Log.d("Sustenta", "Criação da lista");
+            helper = new FirebaseHelper(mainDB);
+            classList = new ArrayList<VideoAula>();
+            classList = helper.retrieve();
+        } else {
+            Log.d("Sustenta", "Lista criada");
+        }
+
+        ArrayAdapter<VideoAula> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, classList);
 
         videoList.setAdapter(adapter);
         videoList.setOnItemClickListener(this);
-
     }
 
     public void onItemClick(AdapterView lista, View v, int position, long id) {
