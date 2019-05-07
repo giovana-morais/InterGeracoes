@@ -34,10 +34,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public List<VideoAula> todasAsAulas() {
         List aulas;
         aulas = new ArrayList();
-        aulas.add(new VideoAula("Whatsapp", "Iniciar conversa individual", "gs://intergeracoes-2018.appspot.com/iniciar_conversa.mp4"));
-        aulas.add(new VideoAula("Whatsapp", "Iniciar conversa em grupo", "gs://intergeracoes-2018.appspot.com/iniciar_grupo.mp4"));
-        aulas.add(new VideoAula("Whatsapp", "Enviar foto da câmera", "gs://intergeracoes-2018.appspot.com/enviar_foto.mp4"));
-        aulas.add(new VideoAula("Whataspp", "Enviar foto da galeria", "gs://intergeracoes-2018.appspot.com/enviar_foto_galeria.mp4"));
+        aulas.add(new VideoAula("Whatsapp", "Iniciar conversa", "gs://intergeracoes-2018.appspot.com/wpp_iniciar_conversa.mp4"));
+        aulas.add(new VideoAula("Whatsapp", "Deletar mensagem", "gs://intergeracoes-2018.appspot.com/wpp_deletar_mensagem"));
+        aulas.add(new VideoAula("Whatsapp", "Editar status", "gs://intergeracoes-2018.appspot.com/wpp_editar_status.mp4"));
+        aulas.add(new VideoAula("Whataspp", "Encaminhar mensagem", "gs://intergeracoes-2018.appspot.com/wpp_encaminhar_mensagem"));
+        aulas.add(new VideoAula("Whataspp", "Enviar áudio", "gs://intergeracoes-2018.appspot.com/wpp_enviar_audio.mp4"));
+        aulas.add(new VideoAula("Whataspp", "Enviar emoji", "gs://intergeracoes-2018.appspot.com/wpp_enviar_emoji.mp4"));
+        aulas.add(new VideoAula("Whataspp", "Trocar foto de perfil", "gs://intergeracoes-2018.appspot.com/wpp_foto_perfil.mp4"));
+        aulas.add(new VideoAula("Whataspp", "Criar grupo", "gs://intergeracoes-2018.appspot.com/wpp_iniciar_grupo.mp4"));
+        aulas.add(new VideoAula("Whataspp", "Fazer ligação", "gs://intergeracoes-2018.appspot.com/wpp_ligacao.mp4"));
 
         return aulas;
     }
