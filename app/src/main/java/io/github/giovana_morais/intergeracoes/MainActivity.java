@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         VideoAula va = new VideoAula();
         va = (VideoAula) lista.getItemAtPosition(position);
 
-        Log.d("Sustenta: onItemClick", "O Objeto clicado é " + va.getNome() + ". A URL é " + va.getUrl());
+//        Log.d("Sustenta: onItemClick", "O Objeto clicado é " + va.getNome() + ". A URL é " + va.getUrl());
 
         Intent intent = new Intent();
 
@@ -80,10 +80,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if (files != null) {
                 for (File f : files) {
                     if (f.isDirectory()) {
-                        Log.i("Sustenta", "Deletando diretório " + file.getName());
+//                        Log.i("Sustenta", "Deletando diretório " + file.getName());
                         deleteTempFiles(f);
                     } else {
-                        Log.i("Sustenta", "Deletando arquivo " + file.getName());
+//                        Log.i("Sustenta", "Deletando arquivo " + file.getName());
                         f.delete();
                     }
                 }

@@ -54,7 +54,7 @@ public class ListItemDetail extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("Sustenta", "erro criando arquivo temporário");
+//            Log.e("Sustenta", "erro criando arquivo temporário");
         }
 
         final File finalLocalFile = localFile;
@@ -62,10 +62,10 @@ public class ListItemDetail extends AppCompatActivity {
             @Override
             public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                 // Local temp file has been created
-                Log.d("Sustenta", "Arquivo baixado com sucesso!");
+//                Log.d("Sustenta", "Arquivo baixado com sucesso!");
                 String uriPath = finalLocalFile.getAbsolutePath();
                 uri = Uri.parse(uriPath);
-                Log.d("Sustenta: Download", "uriPath: " + uriPath);
+//                Log.d("Sustenta: Download", "uriPath: " + uriPath);
                 progressBar.setVisibility(View.GONE);
                 vv.setMediaController(mediacontroller);
                 vv.setVideoURI(uri);
@@ -77,7 +77,7 @@ public class ListItemDetail extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
-                Log.e("Sustenta", "Deu pau na hora de baixar o vídeo para o arquivo temporário");
+//                Log.e("Sustenta", "Deu pau na hora de baixar o vídeo para o arquivo temporário");
             }
         });
     }
